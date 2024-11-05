@@ -4,14 +4,14 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                // Clone the repository from GitHub
+                // Clone the repository from GitHub's main branch
                 git branch: 'main', url: 'https://github.com/your-username/your-repo.git'
             }
         }
         
         stage('Install Dependencies') {
             steps {
-                // Install any required dependencies (if needed)
+                // Static websites usually have no dependencies to install
                 echo 'No dependencies to install for static site.'
             }
         }
@@ -19,16 +19,17 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building the static website...'
-                // For a static site, there may not be an actual "build" step,
-                // but you could add any minification or bundling here if needed
+                // For a static site, this stage might be empty
+                // Add minification or bundling steps here if needed
             }
         }
 
         stage('Deploy') {
             steps {
                 echo 'Deploying the website...'
-                // Add deployment steps here. For example, deploying to GitHub Pages, S3, or a web server.
-                // For now, we’ll simply print a message, as deployment is environment-specific
+                // Placeholder for deployment commands
+                // For example, you could add commands to deploy to GitHub Pages or an S3 bucket
+                echo 'Deployment step will vary based on your hosting service'
             }
         }
     }
