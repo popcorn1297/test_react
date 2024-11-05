@@ -1,0 +1,47 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Clone Repository') {
+            steps {
+                // Clone the repository from GitHub
+                git branch: 'main', url: 'https://github.com/your-username/your-repo.git'
+            }
+        }
+        
+        stage('Install Dependencies') {
+            steps {
+                // Install any required dependencies (if needed)
+                echo 'No dependencies to install for static site.'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo 'Building the static website...'
+                // For a static site, there may not be an actual "build" step,
+                // but you could add any minification or bundling here if needed
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying the website...'
+                // Add deployment steps here. For example, deploying to GitHub Pages, S3, or a web server.
+                // For now, we’ll simply print a message, as deployment is environment-specific
+            }
+        }
+    }
+
+    post {
+        always {
+            echo 'Pipeline completed.'
+        }
+        success {
+            echo 'Pipeline finished successfully.'
+        }
+        failure {
+            echo 'Pipeline failed.'
+        }
+    }
+}
